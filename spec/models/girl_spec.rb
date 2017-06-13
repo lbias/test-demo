@@ -9,27 +9,45 @@ RSpec.describe Girl, type: :model do
     @girl_2 = Girl.new(params_2)
   end
 
-  # 测试用例1-1
-  # 创建一个 单身 不漂亮的 女孩, 来验证 have_chance? 方法
-  it "have chance? {single but not beautiful}" do
-    expect(@girl_1.have_chance?).to eq(true)
-  end
+  # # 测试用例1-1
+  # # 创建一个 单身 不漂亮的 女孩, 来验证 have_chance? 方法
+  # it "have chance? {single but not beautiful}" do
+  #   expect(@girl_1.have_chance?).to eq(true)
+  # end
+  #
+  # # 测试用例1-2
+  # # 创建一个 单身 不漂亮的 女孩, 来验证 suit_my_taste? 方法
+  # it "suit my taste? {single but not beautiful}" do
+  #   expect(@girl_1.suit_my_taste?).to eq(false)
+  # end
+  #
+  # # 测试用例2-1
+  # # 创建了一个 单身 但不漂亮的 女孩, 来验证 have_chance? 方法
+  # it "have chance? {single but not beautiful}" do
+  #   expect(@girl_2.have_chance?).to eq(true)
+  # end
+  #
+  # # 测试用例2-2
+  # # 创建了一个 既单身又漂亮的 女孩, 来验证 suit_my_taste? 方法
+  # it "suit my taste? {single but not beautiful}" do
+  #   expect(@girl_2.suit_my_taste?).to eq(true)
+  # end
 
-  # 测试用例1-2
-  # 创建一个 单身 不漂亮的 女孩, 来验证 suit_my_taste? 方法
-  it "suit my taste? {single but not beautiful}" do
-    expect(@girl_1.suit_my_taste?).to eq(false)
-  end
+  # 使用 subject
+    subject(:girl_1){ @girl_1 }
+    subject(:girl_2){ @girl_2 }
 
-  # 测试用例2-1
-  # 创建了一个 单身 但不漂亮的 女孩, 来验证 have_chance? 方法
-  it "have chance? {single but not beautiful}" do
-    expect(@girl_2.have_chance?).to eq(true)
-  end
+    it "girl_1.have chance?" do
+      expect(girl_1.have_chance?).to eq(true)
+    end
+    it "girl_1.suit my taste?" do
+      expect(girl_1.suit_my_taste?).to eq(false)
+    end
 
-  # 测试用例2-2
-  # 创建了一个 既单身又漂亮的 女孩, 来验证 suit_my_taste? 方法
-  it "suit my taste? {single but not beautiful}" do
-    expect(@girl_2.suit_my_taste?).to eq(true)
-  end  
+    it "girl_2.have chance?" do
+      expect(girl_2.have_chance?).to eq(true)
+    end
+    it "girl_2.suit my taste?" do
+      expect(girl_2.suit_my_taste?).to eq(true)
+    end
 end
