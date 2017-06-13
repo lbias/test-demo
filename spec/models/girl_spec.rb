@@ -8,4 +8,12 @@ RSpec.describe Girl, type: :model do
     girl = Girl.new(params)
     expect(girl.have_chance?).to eq(true)
   end
+
+  # 测试用例2
+  # 创建一个 单身 不漂亮的 女孩, 来验证 suit_my_taste? 方法
+  it "suit my taste? {single but not beautiful}" do
+    params = { single: true, beautiful: false }
+    girl = Girl.new(params)
+    expect(girl.suit_my_taste?).to eq(true)
+  end
 end
